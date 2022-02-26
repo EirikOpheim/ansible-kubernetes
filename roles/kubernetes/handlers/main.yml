@@ -1,0 +1,10 @@
+---
+# handlers file for kubernetes
+- name: modprobe
+  shell: "sudo modprobe {{ item }}"
+  with_items:
+          - overlay
+          - br_netfilter
+
+- name: sysctl
+  shell: "sysctl --system"  

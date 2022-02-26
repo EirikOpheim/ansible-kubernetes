@@ -1,0 +1,15 @@
+[all]
+
+[all:children]
+
+masters
+workers
+
+[masters]
+
+control 
+
+[workers]
+
+worker1
+worker2
