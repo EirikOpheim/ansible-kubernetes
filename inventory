@@ -2,10 +2,10 @@
 
 [all:children]
 
-masters
+control_nodes
 workers
 
-[masters]
+[control_nodes]
 
 control 
 
