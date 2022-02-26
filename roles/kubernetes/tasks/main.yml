@@ -1,3 +1,3 @@
 ---
 # tasks file for kubernetes
-include: containerd.yml
+include: environment.yml

@@ -1,0 +1,25 @@
+---
+
+- name: Install containerd
+  package:
+          name: containerd
+          state: present
+
+- name: Configure containerd
+  file:
+          name: /etc/containerd/
+          state: directory
+
+- name: Send default containerd config to server
+  template:
+          src: containerd.conf
+          dest: /etc/containerd/containerd.conf
+          mode: '644'
+  notify: restart_containerd
+
+- name: Install other required packages
+  package:
+          name: ['apt-transport-https', 'curl']
+          state: present
+
+...

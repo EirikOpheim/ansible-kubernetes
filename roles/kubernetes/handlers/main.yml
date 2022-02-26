@@ -8,3 +8,8 @@
 
 - name: sysctl
   shell: "sysctl --system"  
+
+- name: restart_containerd
+  service:
+          name: containerd
+          state: restarted
