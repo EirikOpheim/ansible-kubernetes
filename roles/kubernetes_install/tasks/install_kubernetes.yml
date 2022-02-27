@@ -1,0 +1,21 @@
+---
+
+- name: Install kubernetes packages
+  apt:
+          name: "{{ item }}"
+          state: present
+          update_cache: yes
+  with_items:
+          - kubectl=1.23.0-00
+          - kubelet=1.23.0-00
+          - kubeadm=1.23.0-00
+
+- name: Hold the kubenetes version of installed packages
+  dpkg_selections:
+          name: "{{ item }}"
+          selection: hold
+  with_items:
+          - kubectl
+          - kubelet
+          - kubeadm
+
