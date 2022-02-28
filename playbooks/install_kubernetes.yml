@@ -8,6 +8,7 @@
 
         - role: kubernetes_init_master
           tags: [kubernetes_init_master]
+          when: '"control_nodes" in group_names'
 
         - role: kubernetes_init_worker
           tags: [kubernetes_init_worker]

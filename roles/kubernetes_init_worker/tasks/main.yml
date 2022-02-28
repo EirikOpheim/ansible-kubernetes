@@ -2,7 +2,7 @@
 # tasks file for kubernetes_init_worker
 
 - include: create_join_command.yml
-  when: "'control_nodes' in group_vars"
+  when: "'control_nodes' in group_names"
 
 - include: join_cluster.yml
-  when: "'workers' in group_vars"
+  when: "'workers' in group_names"

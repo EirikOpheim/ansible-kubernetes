@@ -3,5 +3,4 @@
 
 - include: initialize_cluster.yml
 - include: networking.yml
-- include: prepare_join.yml
 

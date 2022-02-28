@@ -1,3 +1,4 @@
 ---
 # defaults file for kubernetes_init_worker
 kubernetes_init_kubeuser: cloud_user
+kubernetes_init_master_hostname: control

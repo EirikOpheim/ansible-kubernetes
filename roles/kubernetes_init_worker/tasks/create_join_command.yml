@@ -9,7 +9,7 @@
      path: "/home/{{ kubernetes_init_kubeuser }}/join_command"
      line: "{{ join_command.stdout_lines[0] }}"
      create: yes
-     regexp: "{{ join_command.stdout_lines[0] }}"
+     regexp: "^kubeadm"
 
 - name: Fetch join command
   fetch:
