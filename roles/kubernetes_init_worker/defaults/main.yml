@@ -1,2 +1,3 @@
 ---
 # defaults file for kubernetes_init_worker
+kubernetes_init_kubeuser: cloud_user

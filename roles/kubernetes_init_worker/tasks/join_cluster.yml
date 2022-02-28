@@ -1,0 +1,13 @@
+---
+
+- name: Send join file to server
+  copy:
+          src: "/tmp/join_command/home/{{ kubernetes_init_kubeuser }}/join_command"
+          dest: "/home/{{ kubernetes_init_kubeuser }}/join_command"
+          mode: '744'
+          owner: "{{ kubernetes_init_kubeuser }}"
+          group: "{{ kubernetes_init_kubeuser }}"
+
+- name: Join cluster
+  shell: "/tmp/join_command/home/{{ kubernetes_init_kubeuser }}/join_command"
+

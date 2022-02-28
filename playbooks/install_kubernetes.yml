@@ -4,9 +4,12 @@
   roles:
 
         - role: kubernetes_install
-          tags: [install_kubernetes]
+          tags: [kubernetes_install]
 
-        - role: kubernetes_init
-          tags: [init_kubernetes]
+        - role: kubernetes_init_master
+          tags: [kubernetes_init_master]
+
+        - role: kubernetes_init_worker
+          tags: [kubernetes_init_worker]
 
 ...
