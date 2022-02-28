@@ -4,3 +4,11 @@
   service:
           name: containerd
           state: restarted
+
+- name: restart_kubelet
+  service:
+          name: kubelet
+          daemon_reload: yes
+          state: restarted
+
+...

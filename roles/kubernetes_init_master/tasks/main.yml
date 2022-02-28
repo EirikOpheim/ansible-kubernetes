@@ -1,0 +1,7 @@
+---
+# tasks file for kubernetes_init
+
+- include: initialize_cluster.yml
+- include: networking.yml
+- include: prepare_join.yml
+
