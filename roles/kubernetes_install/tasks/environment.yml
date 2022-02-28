@@ -5,11 +5,18 @@
           src: containerd.conf
           dest: /etc/modules-load.d/containerd.conf
           mode: '644' 
-  notify: modprobe
+
+- name: modprobe
+  shell: "sudo modprobe {{ item }}"
+  with_items:
+          - overlay
+          - br_netfilter
 
 - name: Set up 99-kubernetes-cri.conf
   template:
           src: 99-kubernetes-cri.conf
           dest: /etc/sysctl.d/99-kubernetes-cri.conf
           mode: '644' 
-  notify: sysctl
+
+- name: sysctl
+  shell: "sysctl --system"  

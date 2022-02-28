@@ -1,5 +1,6 @@
 ---
 # tasks file for kubernetes
+- include: hosts.yml
 - include: configure_kubernetes_repo.yml
 - include: environment.yml
 - include: disable_swap.yml

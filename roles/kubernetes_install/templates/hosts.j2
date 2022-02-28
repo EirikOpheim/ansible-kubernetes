@@ -1,0 +1,10 @@
+# This file is managed by ansible. Local changes may be overwritten.
+
+127.0.0.1 localhost
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+
+
+{% for server in groups.all %}
+{{ hostvars[server].ansible_facts.default_ipv4.address }} {{ hostvars[server].ansible_facts.fqdn }} {{ hostvars[server].ansible_facts.hostname }} {{ server }}
+{% endfor %}

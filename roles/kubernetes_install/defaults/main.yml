@@ -1,2 +1,5 @@
 ---
 # defaults file for kubernetes
+
+update_dns: true
+
