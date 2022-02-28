@@ -1,0 +1,19 @@
+---
+
+- name: Generate join command
+  command: kubeadm token create --print-join-command
+  register: join_command
+
+- name: Print join command in file
+  lineinfile:
+     path: "/home/{{ kubernetes_init_kubeuser }}/join_command"
+     line: "{{ join_command.stdout_lines[0] }}"
+     create: yes
+     regexp: "{{ join_command.stdout_lines[0] }}"
+
+- name: Fetch join command
+  fetch:
+     src: "/home/{{ kubernetes_init_kubeuser }}/join_command"
+     dest: "/tmp/join_command"
+
+

@@ -1,0 +1,17 @@
+---
+
+- name: Start and enable kubelet
+  service:
+          name: kubelet
+          state: started
+          enabled: yes
+
+- name: Configure kubelet IP
+  lineinfile:
+          path: /etc/default/kubelet
+          line: "KUBELET_EXTRA_ARGS=--node-ip={{ ansible_default_ipv4.address }}"
+          create: yes
+          regexp: "^KUBELET_EXTRA_ARGS=--node-ip"
+  notify: restart_kubelet
+
+- meta: flush_handlers

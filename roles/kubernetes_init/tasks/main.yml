@@ -1,0 +1,15 @@
+---
+# tasks file for kubernetes_init
+
+- include: start_services.yml
+
+- include: initialize_cluster.yml
+  when: "'control_nodes' in group_names"
+
+- include: networking.yml
+  when: "'control_nodes' in group_names"
+
+- include: prepare_join.yml
+  when: "'control_nodes' in group_names"
+
+

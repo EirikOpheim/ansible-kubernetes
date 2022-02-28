@@ -1,0 +1,21 @@
+---
+
+- name: Start kubernetes cluster
+  shell: kubeadm init --kubernetes-version 1.23.0 --apiserver-advertise-address "{{ ansible_default_ipv4.address }}" --pod-network-cidr "{{ kubernetes_init_pod_network_cidr }}" 
+
+- name: Set up kubeconfig for "{{ kubernetes_init_kubeuser }}"
+  file:
+          name: "/home/{{ kubernetes_init_kubeuser }}/.kube"
+          state: directory
+          owner: "{{ kubernetes_init_kubeuser }}"
+          group: "{{ kubernetes_init_kubeuser }}"
+
+- name: Copy kubernetes config to "{{ kubernetes_init_kubeuser }}" home directory
+  copy:
+          src: /etc/kubernetes/admin.conf
+          remote_src: true
+          dest: "/home/{{ kubernetes_init_kubeuser }}/.kube/config"
+          owner: "{{ kubernetes_init_kubeuser }}"
+          group: "{{ kubernetes_init_kubeuser }}"
+
+...

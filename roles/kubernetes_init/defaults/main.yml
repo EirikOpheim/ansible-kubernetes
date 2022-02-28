@@ -1,0 +1,7 @@
+---
+# defaults file for kubernetes_init
+
+kubernetes_init_apiserver_advertise_adress: 192.168.50.10
+kubernetes_init_cert_ekstra_sans: 192.168.50.10
+kubernetes_init_pod_network_cidr: 192.168.0.0/16
+kubernetes_init_kubeuser: cloud_user
