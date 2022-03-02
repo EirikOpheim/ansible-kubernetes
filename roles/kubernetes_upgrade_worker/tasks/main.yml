@@ -1,0 +1,6 @@
+---
+# tasks file for kubernetes_upgrade_control
+
+- include: drain_node.yml
+- include: upgrade_components.yml
+- include: uncordon_node.yml

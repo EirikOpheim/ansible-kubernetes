@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  vars:
+          upgrade_kubernetes_version: 1.23.0-00
+  roles:
+
+          - role: kubernetes_upgrade_control
+            tags: upgrade_control
+            when: '"control_nodes" in group_names'

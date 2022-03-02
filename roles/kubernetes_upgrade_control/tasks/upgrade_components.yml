@@ -1,0 +1,54 @@
+---
+
+- name: Plan upgrade to requested version
+  shell: "kubeadm upgrade plan {{ upgrade_kubernetes_version }}"
+  register: plan
+
+- name: Print plan
+  debug:
+          msg: "{{ plan.stdout_lines }}"
+
+- name: Upgrade to requested version
+  shell: "kubeadm upgrade apply -y {{ upgrade_kubernetes_version }}"
+  register: upgrade_output
+
+- name: Print output from upgrade
+  debug:
+          msg: "{{ upgrade_output.stdout_lines }}"
+
+- name: Unhold kubelet and kubectl version
+  dpkg_selections:
+          name: "{{ item }}"
+          selection: install
+  with_items:
+          - kubelet
+          - kubectl
+
+- name: Upgrade kubeadm
+  apt:
+          update_cache: yes
+          state: present
+          force: no
+          name: "{{ item }}={{ upgrade_kubernetes_version }}"
+  with_items:
+          - kubelet
+          - kubectl
+
+- name: Hold the kubeadm version
+  dpkg_selections:
+          name: "{{ item }}"
+          selection: hold
+  with_items:
+          - kubelet
+          - kubectl
+
+- name: Run daemon reload
+  systemd:
+          daemon_reload: yes
+
+- name: Restart kubelet
+  service:
+          name: kubelet
+          state: restarted
+
+...

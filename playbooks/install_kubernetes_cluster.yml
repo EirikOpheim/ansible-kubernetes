@@ -6,8 +6,8 @@
         - role: kubernetes_install
           tags: [kubernetes_install]
 
-        - role: kubernetes_init_master
-          tags: [kubernetes_init_master]
+        - role: kubernetes_init_control
+          tags: [kubernetes_init_control]
           when: '"control_nodes" in group_names'
 
         - role: kubernetes_init_worker

@@ -1,0 +1,4 @@
+---
+# defaults file for kubernetes_upgrade_control
+
+upgrade_kubernetes_version: ""
