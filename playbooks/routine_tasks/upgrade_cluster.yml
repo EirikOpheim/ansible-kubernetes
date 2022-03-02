@@ -8,3 +8,7 @@
           - role: kubernetes_upgrade_control
             tags: upgrade_control
             when: '"control_nodes" in group_names'
+
+          - role: kubernetes_upgrade_worker
+            tags: upgrade_worker
+            when: '"workers" in group_names'

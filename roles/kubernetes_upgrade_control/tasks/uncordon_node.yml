@@ -5,4 +5,9 @@
           state: uncordon
           name: "{{ ansible_hostname }}"
 
+- name: Wait for cluster to stabilize
+  pause:
+          minutes: 1
+          prompt: "Waiting for cluster to stabilize"
+
 ...
